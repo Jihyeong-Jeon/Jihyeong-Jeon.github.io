@@ -7,7 +7,7 @@
 <meta name="description" content="Jihyeong Jeon — Ph.D. candidate in Artificial Intelligence at Seoul National University. Deep learning, reinforcement learning, and generative models for financial decision-making.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Montserrat:wght@500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#ffffff;
@@ -54,8 +54,8 @@
   /* ---------- profile (left column, centered) ---------- */
   .profile{text-align:center;}
   .avatar{
-  width:170px;
-  height:170px;
+  width:200px;
+  height:200px;
   border-radius:50%;
   display:block;
   margin:0 auto 18px;
@@ -64,9 +64,9 @@
   object-position:center;
   background:#ffffff;
   }
-  .name{font-size:30px;font-weight:700;line-height:1.1;margin:0 0 6px;color:var(--ink);}
-  .role{font-size:15px;color:var(--muted);margin:0 0 2px;}
-  .org{font-size:15px;margin:0 0 18px;}
+  .name{font-family:'Lora',Georgia,serif;font-size:34px;font-weight:700;line-height:1.1;margin:0 0 8px;color:var(--ink);}
+  .role{font-family:'Inter',var(--sans);font-size:16px;color:var(--muted);margin:0 0 2px;}
+  .org{font-family:'Inter',var(--sans);font-size:16px;margin:0 0 18px;}
   .org a{font-weight:600;}
 
   .socials{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
@@ -136,7 +136,7 @@
   }
   @media (max-width:560px){
     .meta-cols{grid-template-columns:1fr;gap:26px;}
-    .avatar{width:145px;height:145px;}
+    .avatar{width:170px;height:170px;}
     .name{font-size:30px;}
     .hi{font-size:30px;}
     .pub{grid-template-columns:60px 1fr;gap:15px;}
