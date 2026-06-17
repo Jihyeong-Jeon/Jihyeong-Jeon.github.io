@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jihyeong Jeon</title>
+<meta name="description" content="Jihyeong Jeon — Ph.D. candidate in Artificial Intelligence at Seoul National University. Deep learning, reinforcement learning, and generative models for financial decision-making.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#1b1b1f;        /* strong headings / name */
+    --head:#3f3f46;       /* light section headings (Hi, Recent Publications) */
+    --text:#3a3a42;       /* body */
+    --muted:#7a7a85;      /* meta / authors */
+    --rule:#e7e7ea;
+    --accent:#6d28d9;     /* violet — nods to the CV banner */
+    --accent-2:#c026d3;   /* magenta */
+    --link:#6d28d9;
+    --link-hover:#4c1d95;
+    --serif:'Lora', Georgia, 'Times New Roman', serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --maxw:1180px;
+    --col-left:320px;
+    --col-gap:56px;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:var(--sans);font-size:17px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  a{color:var(--link);text-decoration:none;}
+  a:hover{color:var(--link-hover);text-decoration:underline;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);letter-spacing:-0.01em;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:64px 32px 40px;}
+
+  /* ---------- shared two-column widget ---------- */
+  .widget{
+    display:grid;
+    grid-template-columns:var(--col-left) 1fr;
+    gap:var(--col-gap);
+    align-items:start;
+  }
+  .widget + .widget{margin-top:30px;}
+
+  /* ---------- profile (left column, centered) ---------- */
+  .profile{text-align:center;}
+  .avatar{
+    width:200px;height:200px;border-radius:50%;
+    display:block;margin:0 auto 18px;
+    box-shadow:0 12px 34px rgba(109,40,217,.20);
+  }
+  .name{font-size:34px;font-weight:700;line-height:1.1;margin:0 0 8px;color:var(--ink);}
+  .role{font-size:16px;color:var(--muted);margin:0 0 2px;}
+  .org{font-size:16px;margin:0 0 18px;}
+  .org a{font-weight:600;}
+
+  .socials{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .socials a{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;border-radius:10px;
+    border:1px solid var(--rule);color:var(--accent);
+    transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .socials a:hover{
+    color:#fff;border-color:transparent;text-decoration:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    transform:translateY(-2px);
+  }
+  .socials svg{width:21px;height:21px;}
+  .socials .cv{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.04em;}
+
+  /* ---------- about: right column ---------- */
+  .hi{font-size:34px;font-weight:500;color:var(--head);margin:0 0 18px;}
+  .lead p{margin:0 0 18px;font-size:17.5px;}
+  .lead p:last-child{margin-bottom:0;}
+
+  .meta-cols{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:34px;
+  }
+  .meta-cols h3{font-size:23px;font-weight:600;color:var(--ink);margin:0 0 14px;}
+  .interests{margin:0;padding-left:20px;font-size:16px;}
+  .interests li{padding:3px 0;}
+
+  .edu{margin:0 0 16px;display:flex;gap:10px;}
+  .edu .cap{flex:0 0 auto;margin-top:3px;color:var(--accent);}
+  .edu .cap svg{width:20px;height:20px;display:block;}
+  .edu .deg{color:var(--ink);font-weight:600;line-height:1.35;}
+  .edu .sch{color:var(--muted);font-size:14.5px;}
+
+  /* ---------- publications widget ---------- */
+  .pub-title{font-size:34px;font-weight:500;color:var(--head);margin:0;line-height:1.15;}
+
+  .pub{
+    display:grid;grid-template-columns:78px 1fr;gap:20px;
+    padding:0 0 26px;margin:0 0 26px;border-bottom:1px solid var(--rule);
+  }
+  .pub:last-of-type{border-bottom:0;padding-bottom:6px;margin-bottom:10px;}
+  .pub .thumb{width:78px;height:78px;border-radius:11px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.08);}
+  .pub .thumb svg{display:block;width:100%;height:100%;}
+  .pub .title{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);line-height:1.35;margin:0 0 6px;}
+  .pub .authors{font-size:15px;color:var(--muted);margin:0 0 5px;}
+  .pub .authors .me{color:var(--ink);font-weight:600;}
+  .pub .venue{font-size:14px;color:var(--muted);margin:0;}
+  .pub .venue .badge{
+    font-weight:600;color:var(--accent);background:#f6f1fe;border:1px solid #e5d8fb;
+    border-radius:6px;padding:1px 8px;margin-right:8px;font-size:12.5px;
+  }
+  .seeall{margin:6px 0 0;font-size:15px;}
+
+  footer{
+    margin-top:46px;padding-top:22px;border-top:1px solid var(--rule);
+    color:var(--muted);font-size:13.5px;text-align:center;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:880px){
+    .widget{grid-template-columns:1fr;gap:30px;}
+    .widget + .widget{margin-top:38px;}
+    .pub-title{font-size:28px;}
+    .wrap{padding:44px 22px;}
+  }
+  @media (max-width:560px){
+    .meta-cols{grid-template-columns:1fr;gap:26px;}
+    .avatar{width:170px;height:170px;}
+    .name{font-size:30px;}
+    .hi{font-size:30px;}
+    .pub{grid-template-columns:60px 1fr;gap:15px;}
+    .pub .thumb{width:60px;height:60px;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ ABOUT WIDGET ============ -->
+  <section class="widget about">
+    <!-- left: profile -->
+    <div class="profile">
+      <!-- Swap for a real photo: <img class="avatar" src="avatar.jpg" alt="Jihyeong Jeon"> -->
+      <svg class="avatar" viewBox="0 0 200 200" role="img" aria-label="Jihyeong Jeon">
+        <defs><linearGradient id="av" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#6d28d9"/><stop offset="1" stop-color="#c026d3"/>
+        </linearGradient></defs>
+        <circle cx="100" cy="100" r="100" fill="url(#av)"/>
+        <text x="100" y="102" text-anchor="middle" dominant-baseline="central"
+              font-family="Lora, Georgia, serif" font-size="76" font-weight="600" fill="#fff">JJ</text>
+      </svg>
+
+      <h1 class="name">Jihyeong Jeon</h1>
+      <p class="role">Ph.D. Candidate in Artificial Intelligence</p>
+      <p class="org"><a href="https://datalab.snu.ac.kr" target="_blank" rel="noopener">Data Mining Lab</a>, SNU</p>
+
+      <div class="socials">
+        <a href="mailto:jeonjihyeong@snu.ac.kr" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+        </a>
+        <a href="https://scholar.google.com/citations?user=fCqtq2YAAAAJ&hl=ko" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v3.5L12 20l7-3.32v-3.5L12 16l-7-2.82z"/></svg>
+        </a>
+        <a href="cv.pdf" target="_blank" rel="noopener" class="cv" aria-label="Curriculum Vitae" title="CV (PDF)">CV</a>
+        <!-- GitHub: add your URL and uncomment.
+        <a href="https://github.com/USERNAME" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.72 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.95.68 1.92v2.85c0 .27.18.6.69.49A10.27 10.27 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        </a>
+        -->
+      </div>
+    </div>
+
+    <!-- right: bio + interests/education -->
+    <div class="about-body">
+      <h2 class="hi">Hi</h2>
+      <div class="lead">
+        <p>I'm a Ph.D. candidate in Artificial Intelligence at Seoul National University, where I work in the <a href="https://datalab.snu.ac.kr" target="_blank" rel="noopener">Data Mining Lab</a> under the guidance of Prof. U Kang.</p>
+        <p>My research sits at the intersection of deep learning and reinforcement learning, with a focus on generative models and their application to financial decision-making — portfolio optimization, risk-aware allocation, and robust prediction under distribution shift. Before SNU, I studied Mathematics and Computer Science at Purdue University.</p>
+        <p>If you're working on related problems, I'd love to hear from you. Get in touch at <a href="mailto:jeonjihyeong@snu.ac.kr">jeonjihyeong@snu.ac.kr</a>.</p>
+      </div>
+
+      <div class="meta-cols">
+        <div>
+          <h3>Interests</h3>
+          <ul class="interests">
+            <li>Deep Learning</li>
+            <li>Reinforcement Learning</li>
+            <li>Generative Models</li>
+            <li>Financial Machine Learning</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Education</h3>
+          <div class="edu">
+            <span class="cap"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v3.5L12 20l7-3.32v-3.5L12 16l-7-2.82z"/></svg></span>
+            <span><span class="deg">Ph.D. in Artificial Intelligence, 2026</span><br><span class="sch">Seoul National University</span></span>
+          </div>
+          <div class="edu">
+            <span class="cap"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v3.5L12 20l7-3.32v-3.5L12 16l-7-2.82z"/></svg></span>
+            <span><span class="deg">B.S. in Mathematics &amp; Computer Science, 2019</span><br><span class="sch">Purdue University</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PUBLICATIONS WIDGET ============ -->
+  <section class="widget pubs">
+    <!-- left: section title -->
+    <div>
+      <h2 class="pub-title">Recent Publications</h2>
+    </div>
+
+    <!-- right: list -->
+    <div class="pub-list">
+
+      <article class="pub">
+        <div class="thumb">
+          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6d28d9"/><stop offset="1" stop-color="#9333ea"/></linearGradient></defs>
+            <rect width="88" height="88" fill="url(#g1)"/>
+            <g fill="#fff" opacity="0.92"><circle cx="22" cy="30" r="3"/><circle cx="38" cy="22" r="2.4"/><circle cx="54" cy="32" r="3.4"/><circle cx="30" cy="46" r="2.2"/><circle cx="48" cy="50" r="3"/><circle cx="64" cy="44" r="2.6"/><circle cx="20" cy="62" r="2.8"/><circle cx="40" cy="66" r="2.2"/><circle cx="60" cy="64" r="3.2"/></g>
+          </svg>
+        </div>
+        <div>
+          <p class="title">Diffusion Models for Risk-Aware Portfolio Optimization</p>
+          <p class="authors"><span class="me">Jihyeong Jeon</span>, Jeongyoung Lee, and U Kang</p>
+          <p class="venue"><span class="badge">WSDM 2026</span>ACM Int'l Conference on Web Search and Data Mining · Boise, Idaho, USA</p>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="thumb">
+          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#c026d3"/></linearGradient></defs>
+            <rect width="88" height="88" fill="url(#g2)"/>
+            <g stroke="#fff" stroke-width="2" fill="none" opacity="0.92"><circle cx="44" cy="44" r="9"/><circle cx="22" cy="24" r="5"/><circle cx="66" cy="26" r="5"/><circle cx="24" cy="64" r="5"/><circle cx="64" cy="64" r="5"/><path d="M27 28 38 39M61 30 51 40M28 60 38 50M60 60 51 50"/></g>
+          </svg>
+        </div>
+        <div>
+          <p class="title">Entity-Aware Generative Retrieval for Personalized Contexts</p>
+          <p class="authors"><span class="me">Jihyeong Jeon</span>, Jiwon Lee, Cheol Ryu, and U Kang</p>
+          <p class="venue"><span class="badge">CIKM 2025</span>ACM Int'l Conference on Information and Knowledge Management · Seoul, Republic of Korea</p>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="thumb">
+          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b21b6"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+            <rect width="88" height="88" fill="url(#g3)"/>
+            <g fill="#fff" opacity="0.92"><rect x="16" y="48" width="9" height="22" rx="2"/><rect x="30" y="36" width="9" height="34" rx="2"/><rect x="44" y="42" width="9" height="28" rx="2"/><rect x="58" y="28" width="9" height="42" rx="2"/></g>
+            <path d="M14 30 L30 38 L44 26 L66 34" stroke="#fff" stroke-width="2.2" fill="none" opacity="0.9" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <p class="title">Mitigating Distribution Shift in Stock Price Data via Return-Volatility Normalization for Accurate Prediction</p>
+          <p class="authors">Hyunwoo Lee, <span class="me">Jihyeong Jeon</span>, Jaemin Hong, and U Kang</p>
+          <p class="venue"><span class="badge">CIKM 2025</span>ACM Int'l Conference on Information and Knowledge Management · Seoul, Republic of Korea</p>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="thumb">
+          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6d28d9"/><stop offset="1" stop-color="#db2777"/></linearGradient></defs>
+            <rect width="88" height="88" fill="url(#g4)"/>
+            <g stroke="#fff" stroke-width="2.4" fill="none" opacity="0.92" stroke-linecap="round"><path d="M10 44q9-22 18 0t18 0 18 0 18 0"/><path d="M10 58q9-12 18 0t18 0 18 0 18 0" opacity="0.6"/><path d="M10 30q9-32 18 0t18 0 18 0 18 0" opacity="0.45"/></g>
+          </svg>
+        </div>
+        <div>
+          <p class="title">FreQuant: A Reinforcement-Learning based Adaptive Portfolio Optimization with Multi-frequency Decomposition</p>
+          <p class="authors"><span class="me">Jihyeong Jeon</span>, Jiwon Park, Chanhee Park, and U Kang</p>
+          <p class="venue"><span class="badge">KDD 2024</span>ACM SIGKDD Int'l Conference on Knowledge Discovery and Data Mining · Barcelona, Spain</p>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="thumb">
+          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4c1d95"/><stop offset="1" stop-color="#9333ea"/></linearGradient></defs>
+            <rect width="88" height="88" fill="url(#g5)"/>
+            <g fill="#fff" opacity="0.92"><rect x="16" y="20" width="40" height="26" rx="7"/><path d="M26 46 L26 56 L36 46 Z"/><rect x="40" y="40" width="32" height="22" rx="6" opacity="0.7"/><path d="M62 62 L62 70 L54 62 Z" opacity="0.7"/></g>
+          </svg>
+        </div>
+        <div>
+          <p class="title">Accurate Stock Movement Prediction with Self-supervised Learning from Sparse Noisy Tweets</p>
+          <p class="authors">Yejun Soun, Jaemin Yoo, Minyong Cho, <span class="me">Jihyeong Jeon</span>, and U Kang</p>
+          <p class="venue"><span class="badge">BigData 2022</span>IEEE Int'l Conference on Big Data · Osaka, Japan</p>
+        </div>
+      </article>
+
+      <p class="seeall"><a href="https://scholar.google.com/citations?user=fCqtq2YAAAAJ&hl=ko" target="_blank" rel="noopener">See all publications on Google Scholar →</a></p>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Jihyeong Jeon · Built as a static page — host it anywhere.
+  </footer>
+
+</div>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
